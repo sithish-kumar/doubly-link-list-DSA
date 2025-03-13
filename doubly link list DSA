@@ -1,0 +1,123 @@
+class DoublyLinkedList{
+    class Node{
+        int data;
+        Node next;
+        Node prev;
+        
+    Node(int data){
+        this.data = data;
+        this.next = null;
+        this.prev = null;
+    }
+    }    
+    
+Node head, tail;
+
+    // InsertAtbeginning
+
+public void InsertAtbeginning(int data){
+    Node newNode = new Node(data);
+    
+    if(head==null){
+        head=newNode;
+        tail = newNode;
+    }
+    else{
+        newNode.next = head;
+        head.prev = newNode;
+        head=newNode;
+    }
+}    
+
+//InsertAtend 
+
+public void InsertAtend(int data){
+    Node newNode = new Node(data);
+    
+    if(head==null){
+        head=newNode;
+        tail = newNode;
+    }
+    else{
+        tail.next =newNode;
+        newNode.prev = tail;
+        tail=newNode;
+    }
+}
+//deleteat newNode
+
+public void deleteatbegin(){
+    
+    if(head==null){
+        System.out.println("List is empty");
+    }
+    
+    if(head==tail){
+        head= null;
+        tail = null;
+    }
+    else{
+        head =head.next;
+        head.prev=null;
+    }
+
+}
+
+// deleteatend 
+
+public void deleteatend(){
+    if(head==null){
+        System.out.println("List is empty");
+    }
+    
+    if(head==tail){
+        head=null;
+        tail=null;
+    }
+    else{
+        tail= tail.prev;
+        tail.next=null;
+    }
+}
+
+
+//display the elements 
+
+public void display(){
+    Node temp = head;
+    while(temp!=null){
+        System.out.println(temp.data + " ");
+        temp=temp.next;
+    }
+    System.out.println();
+}
+
+}
+
+public class Main{
+    public static void main(String[] args){
+    DoublyLinkedList list = new DoublyLinkedList();
+    list.InsertAtbeginning(10);
+    list.InsertAtbeginning(20);
+    list.InsertAtbeginning(30);
+    list.InsertAtbeginning(40);
+    list.InsertAtbeginning(50);
+    list.InsertAtend(2000);
+    list.InsertAtend(500);
+    list.InsertAtend(4000);
+    list.InsertAtend(6000);
+    list.deleteatbegin(); 
+    list.deleteatend();
+    list.display();
+    
+    }
+}
+OUTPUT:
+40 
+30 
+20 
+10 
+2000 
+500 
+4000 
+
